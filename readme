@@ -16,4 +16,12 @@ In this repo we have solution for analysis .csv files using CrewAI frame work an
 below are few points describe the most.
 1. Fast API used for communicating with the crewAI framework
 2. Streamlit app for UI experience.
-3. used Gemma 2 from Ollama for processing. 
+3. used Gemma 3 from Ollama for processing. 
+
+How to run the process.
+
+1. Download the repo and redirect the repo in local.
+2. Run docker-compose up --build
+3. go to browser and load localhost:8000
+4. Upload your csv file and app will answers based on the data provied and questions asked.  
+
