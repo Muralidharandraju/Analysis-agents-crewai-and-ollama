@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crewai_app
+    ports:
+      - "8090:8090"
+    volumes:
+      - .:/app
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: streamlit_app
+    depends_on:
+      - app
+    environment:
+      - FASTAPI_HOST=http://app:8090
+    ports:
+      - "8000:8000"
+    command: streamlit run /streamlit_app.py --server.port 8000 --server.address 0.0.0.0
+    volumes:
+      - .:/app
+
+volumes:
+  ollama_data:
