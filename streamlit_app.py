@@ -115,8 +115,8 @@ if prompt := st.chat_input("Ask a question about your documents..."):
         with st.spinner("Thinking..."):
             # Pass session_id to backend. Backend associates this with the uploaded files.
             backend_response = send_chat_message_to_backend(prompt, session_id=st.session_state.session_id)
-            if backend_response and "response" in backend_response:
-                response_text = backend_response["response"]
+            if backend_response and "result" in backend_response: # Changed "response" to "result"
+                response_text = backend_response["result"]
                 st.session_state.messages.append({"role": "assistant", "content": response_text})
                 with st.chat_message("assistant"):
                     st.markdown(response_text)

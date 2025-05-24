@@ -2,7 +2,8 @@ streamlit>=1.33.0
 requests
 fastapi
 pydantic
-crewai
+crewai==0.121.0
+litellm==1.68.0
 python-dotenv
 pytest
 PyYAML
