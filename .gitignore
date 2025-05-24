@@ -4,3 +4,4 @@ __pycache__
 loginformation/
 .vscode/
 .idea
+.DS_Store
