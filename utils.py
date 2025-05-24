@@ -103,11 +103,12 @@ def create_data_analysis_crew(knowledge_folder: str, user_input=None):
         tasks = load_tasks(tasks_file, agents)
 
         # Extract question from user_input if messages are provided
-        question = user_input.get("question") if user_input and "question" in user_input else (user_input["messages"][-1]["content"] if user_input and "messages" in user_input and user_input["messages"] else None)
+        question = user_input.get("question") if user_input and "question" in user_input else (user_input["messages"][-1]["content"] if user_input and "messages" in user_input and user_input["messages"] and len(user_input["messages"]) > 0 else None)
 
         # Update task descriptions with the question
         for task in tasks:
-            task.description = task.description.format(question=question)
+            if question:
+                task.description = task.description.format(question=question)
 
         data_analysis_crew = Crew(
             agents=list(agents.values()),
